@@ -1,0 +1,20 @@
+﻿<Window x:Class="ShopConsole.PurchaseDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="PurchaseWindow" Height="300" Width="300">
+
+    <DockPanel LastChildFill="False">
+        <StackPanel DockPanel.Dock="Top">
+            <Label Content="Pet Name" />
+            <TextBox Text="{Binding PetName}"/>
+
+            <Label Content="Amount"></Label>
+            <TextBox Text="{Binding PetAmount}" />
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <Button  MinWidth="50" Content="Purchase" Margin="10"  Command="{Binding PurchasePetCommand}"/>
+            <Button MinWidth="50" Content="Cancel" Margin="10" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+    </DockPanel>
+</Window>

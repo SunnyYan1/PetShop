@@ -9,21 +9,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ShopConsole.ViewMode;
 
 namespace ShopConsole
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for VIPWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class VIPDialogView : Window
     {
-        public MainWindow()
+        public VIPDialogView()
         {
             InitializeComponent();
-            DataContext = new ViewModeMainWindow();
+            ViewModeVipDialogView vm = new ViewModeVipDialogView();
+            this.DataContext = vm;
+            if (vm.CloseAction == null)
+                vm.CloseAction = new Action(this.Close);
         }
     }
 }

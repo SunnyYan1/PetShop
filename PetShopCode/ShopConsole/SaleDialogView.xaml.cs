@@ -9,21 +9,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ShopConsole.DataAccess;
 using ShopConsole.ViewMode;
 
 namespace ShopConsole
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SaleWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SaleDialogView : Window
     {
-        public MainWindow()
+        public SaleDialogView(Pet pet)
         {
             InitializeComponent();
-            DataContext = new ViewModeMainWindow();
+            ViewModeSaleDialogView vm = new ViewModeSaleDialogView(pet);
+            this.DataContext = vm;
+            if (vm.CloseAction == null)
+                vm.CloseAction = new Action(this.Close);
         }
     }
 }

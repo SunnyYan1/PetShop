@@ -1,0 +1,23 @@
+﻿<Window x:Class="ShopConsole.SaleDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="SaleWindow" Height="300" Width="300">
+    <DockPanel LastChildFill="False">
+        <StackPanel DockPanel.Dock="Top">
+            <Label Content="Pet Name" />
+            <TextBox Text="{Binding PetName}"/>
+
+            <Label Content="Amount"></Label>
+            <TextBox  Text="{Binding PetAmount}" />
+            <Label Content="Customer" />
+            <ComboBox ItemsSource="{Binding CustomerList}" DisplayMemberPath="CustomerName" SelectedIndex="0" SelectedItem="{Binding SelectCustomer}" />
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <Button  MinWidth="50" Content="Sale" Margin="10" Command="{Binding SaleCommand}"/>
+            <Button MinWidth="50" Content="Cancel" Margin="10" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+    </DockPanel>
+</Window>
