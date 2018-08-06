@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Transactions;
 using System.Windows;
-using System.Windows.Forms;
 using ShopConsole.DataAccess;
 using MessageBox = System.Windows.MessageBox;
 
@@ -18,7 +17,7 @@ namespace ShopConsole.ViewMode
 
         public Pet SelectPet;
         public string PetName { get; set; }
-        public int PetAmount { get; set; }
+        public int PetAmount  { get; set; }
 
         public ViewModeSaleDialogView(Pet pet)
         {
@@ -29,7 +28,7 @@ namespace ShopConsole.ViewMode
             using (DatabaseDataContext db =
                 new DatabaseDataContext(@"Server=10.30.169.46;Database=PetShop;User Id=sunny;Password=~123qwerty;"))
             {
-                CustomerList = new ObservableCollection<Customer>((from cus in db.Customers select cus).ToList());
+                CustomerList = new ObservableCollection<Customer>((from cus in db.Customers where cus.CusStatus == StatusType.None select cus).ToList());
 
             } 
         }
@@ -78,6 +77,12 @@ namespace ShopConsole.ViewMode
                             return;
                         }
 
+                        if (matchedPet != null && PetAmount <= 0)
+                        {
+                            MessageBox.Show("Cannot sale pet amount less than 0", "Confirm", MessageBoxButton.OK);
+                            return;
+                        }
+
                         var dealRecord = new Deal
                         {
                             Amount = PetAmount,
@@ -93,10 +98,11 @@ namespace ShopConsole.ViewMode
                 }
 
                 CloseAction();
+
             }
             catch (TransactionAbortedException ex)
             {
-                Console.WriteLine("TransactionAbortedException Message: {0}", ex.Message);
+                Console.WriteLine(@"TransactionAbortedException Message: {0}", ex.Message);
             }
         }
         

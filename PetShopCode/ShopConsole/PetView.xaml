@@ -11,7 +11,7 @@
             <MenuItem Header="Sale"
                       Command="{Binding SaleCommand}"/>
             <MenuItem Header="Delete"
-                      Command="{Binding DeleteCommand}"/>
+                      Command="{Binding DeletePetCommand}"/>
         </ContextMenu>
     </UserControl.Resources>
     <StackPanel>

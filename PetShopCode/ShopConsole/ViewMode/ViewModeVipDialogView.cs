@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using ShopConsole.DataAccess;
 
 namespace ShopConsole.ViewMode
@@ -28,21 +26,33 @@ namespace ShopConsole.ViewMode
 
         void AddCustomer(object parameter)
         {
-            Customer customer = new Customer
-            {
-                CustomerName = CustomerName,
-                Phone = PhoneNumber
-            };
-
             using (DatabaseDataContext db =
                 new DatabaseDataContext(@"Server=10.30.169.46;Database=PetShop;User Id=sunny;Password=~123qwerty;"))
             {
-                db.Customers.InsertOnSubmit(customer);
+                var customers = from cus in db.Customers where cus.CustomerName == CustomerName select cus;
+                if (customers.Count() > 1)
+                {
+                    throw new Exception("Too many Customers");
+                }
+
+                var matchedCustomer = customers.FirstOrDefault();
+                if (matchedCustomer == null)
+                {
+                    Customer customer = new Customer
+                    {
+                        CustomerName = CustomerName,
+                        Phone = PhoneNumber,
+                        CusStatus = StatusType.None
+                    };
+                    db.Customers.InsertOnSubmit(customer);
+                }
+                else
+                {
+                    matchedCustomer.CusStatus = StatusType.None;
+                }
                 db.SubmitChanges();
             }
             CloseAction();
-
         }
-    }
-    
+    } 
 }

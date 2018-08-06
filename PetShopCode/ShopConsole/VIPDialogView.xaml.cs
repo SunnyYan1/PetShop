@@ -22,10 +22,6 @@ namespace ShopConsole
         public VIPDialogView()
         {
             InitializeComponent();
-            ViewModeVipDialogView vm = new ViewModeVipDialogView();
-            this.DataContext = vm;
-            if (vm.CloseAction == null)
-                vm.CloseAction = new Action(this.Close);
         }
     }
 }

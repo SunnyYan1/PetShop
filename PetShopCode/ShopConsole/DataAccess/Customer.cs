@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Linq.Mapping;
-using System.Text;
-using System.Windows.Documents;
+﻿using System.Data.Linq.Mapping;
+
 
 namespace ShopConsole.DataAccess
 {
@@ -17,5 +14,8 @@ namespace ShopConsole.DataAccess
 
         [Column]
         public  string Phone { get; set; }
+
+        [Column] 
+        public StatusType CusStatus { get; set; }
     }
 }

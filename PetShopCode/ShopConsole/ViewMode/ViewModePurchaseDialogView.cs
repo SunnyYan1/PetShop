@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Input;
 using ShopConsole.DataAccess;
 
 namespace ShopConsole.ViewMode
@@ -46,13 +43,15 @@ namespace ShopConsole.ViewMode
                     Pet pet = new Pet
                     {
                         PetName = PetName,
-                        Amount = PetAmount
+                        Amount = PetAmount,
+                        Status = StatusType.None
                     };
                     db.Pets.InsertOnSubmit(pet);
                 }
                 else
                 {
                     matchedPet.Amount += PetAmount;
+                    matchedPet.Status = StatusType.None;
                 }
                 db.SubmitChanges();
             }

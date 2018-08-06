@@ -22,11 +22,6 @@ namespace ShopConsole
         public PurchaseDialogView()
         {
             InitializeComponent();
-            ViewModePurchaseDialogView vm = new ViewModePurchaseDialogView();
-            this.DataContext = vm;
-            if(vm.CloseAction == null)
-                vm.CloseAction = new Action(this.Close);
-
         }
     }
 }

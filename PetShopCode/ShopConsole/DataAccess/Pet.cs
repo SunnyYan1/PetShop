@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Linq.Mapping;
-using System.Linq;
-using System.Text;
+﻿using System.Data.Linq.Mapping;
+
 
 namespace ShopConsole.DataAccess
 {
@@ -19,13 +16,13 @@ namespace ShopConsole.DataAccess
         public int Amount { get; set; }
 
         [Column]
-        public int Status { get; set; }
+        public StatusType Status { get; set; }
 
     }
 
     public enum StatusType
     {
-        None,
-        Deleted
+        None = 0,
+        Deleted = 1
     }
 }

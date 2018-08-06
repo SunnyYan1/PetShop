@@ -8,14 +8,14 @@
     <UserControl.Resources>
         <ContextMenu x:Key="CustomerContentMenu">
             <MenuItem Header="Delete"
-                      Command="{Binding DeleteCommand}"/>
+                      Command="{Binding DeleteCusCommand}"/>
         </ContextMenu>
     </UserControl.Resources>
     <StackPanel>
         <DataGrid  AutoGenerateColumns="False" 
                    ContextMenu="{StaticResource CustomerContentMenu}"
                    CanUserAddRows="False" 
-                   SelectedItem="{Binding SelectItem}"
+                   SelectedItem="{Binding SelectCusItem}"
                    IsReadOnly="True" 
                    ItemsSource="{Binding CustomerList, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
