@@ -24,7 +24,7 @@ namespace ShopConsole.ViewMode
         private ObservableCollection<Pet> _petlist;
         private ObservableCollection<Customer> _customerlist;
         private ObservableCollection<DealList> _dealsList;
-        private readonly ILog _log = LogManager.GetLogger("Test1");
+        private readonly ILog _log = log4net.LogManager.GetLogger("Test1");
 
         public ObservableCollection<Pet> PetsList
         {
